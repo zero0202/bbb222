@@ -2,13 +2,14 @@ import asyncio
 
 from aiogram import executor
 
+import load_all
 from config import admin_id
 from database import create_db
-import load_all
+from load_all import bot
 
 
 async def on_shutdown(dp):
-    await load_all.bot.close()
+    await bot.close()
 
 
 async def on_startup(dp):
