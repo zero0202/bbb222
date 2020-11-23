@@ -1,12 +1,12 @@
-import asyncio
 import logging
-
+import os
 from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from config import TOKEN
 from language_middleware import setup_middleware
+
 
 #######################
 # Если у вас РКН блокирует запросы к Телеграму, можете перезаписать адрес по которому делаются запросы
@@ -23,6 +23,8 @@ logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(
 # Поток нам не нужен, т.к. он и так создается в диспатчере.
 
 storage = MemoryStorage()
+if TOKEN is None:
+    TOKEN = '1423900079:AAHcpFJd5lQprkCV8zdjXUjqFJg2-Hxzjgo'
 
 bot = Bot(token=TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot, storage=storage)
